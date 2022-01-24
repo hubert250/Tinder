@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com" 
+             xmlns:local="clr-namespace:Tinder.MarkupExtensions"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Tinder.Views.UserSettings"
+             Visual="Material">
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" Margin="5">
+            <StackLayout Padding="20">
+                <Frame CornerRadius="100" 
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   Padding="-30"
+                   IsClippedToBounds="True">
+                    <Image Source="{local:EmbeddedImage Tinder.Images.someGuy.jpg}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                </Frame>
+            </StackLayout>
+
+            <Entry Placeholder="Imię" Text="{Binding FirstName}"/>
+            <Entry Placeholder="Nazwisko" Text="{Binding LastName}"/>
+            <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email"/>
+            <Entry Placeholder="O mnie" Text="{Binding AboutMe}"/>
+
+            <Button Text="Zapisz" Command="{Binding SaveUserInfoCommand}" IsEnabled="{Binding CanSave}" Style="{DynamicResource CustomButton}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

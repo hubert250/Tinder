@@ -3,8 +3,10 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:prism="http://prismlibrary.com"
             prism:ViewModelLocator.AutowireViewModel="True"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:local="clr-namespace:Tinder.MarkupExtensions" xmlns:tinder="clr-namespace:Tinder.Views"
             android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.IsSwipePagingEnabled="False"
             x:Class="Tinder.Views.MainPage">
-  
+    <tinder:UserSettings IconImageSource="{local:EmbeddedImage Tinder.Images.userAvatar.png}"/>
+    <tinder:SwiperPage IconImageSource="{local:EmbeddedImage Tinder.Images.tinderIcon.png}"/>
 </TabbedPage>

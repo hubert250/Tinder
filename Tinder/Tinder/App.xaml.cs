@@ -1,5 +1,6 @@
 using Prism;
 using Prism.Ioc;
+using Tinder.Services;
 using Tinder.ViewModels;
 using Tinder.Views;
 using Xamarin.Essentials.Implementation;
@@ -19,17 +20,20 @@ namespace Tinder
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("MenuPage");
+            await NavigationService.NavigateAsync("MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+            containerRegistry.RegisterSingleton<IReqresManager, ReqresManager>();
+            containerRegistry.RegisterSingleton<IUserManager, UserManager>();
+
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SwiperPage, SwiperPageViewModel>();
+            containerRegistry.RegisterForNavigation<UserSettings, UserSettingsViewModel>();
         }
     }
 }

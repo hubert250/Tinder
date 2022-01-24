@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Tinder.Droid.Services;
+using Tinder.Services;
 
 namespace Tinder.Droid
 {
@@ -33,7 +35,8 @@ namespace Tinder.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register any platform specific implementations
+            containerRegistry.RegisterSingleton<ISQLiteDb, SQLiteDb>();
+            containerRegistry.RegisterSingleton<IReadWritePermission, ReadWriteStoragePermission>();
         }
     }
 }

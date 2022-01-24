@@ -5,7 +5,12 @@
              x:Class="Tinder.App">
   <Application.Resources>
 
-    <!-- Application resource dictionary -->
+        <Style x:Key="CustomButton" TargetType="Button">
+            <Setter Property="TextColor" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="BackgroundColor" Value="#0072F5"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
 
-  </Application.Resources>
+    </Application.Resources>
 </prism:PrismApplication>

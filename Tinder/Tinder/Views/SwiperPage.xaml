@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com" xmlns:swipeCardView="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView" xmlns:local="clr-namespace:Tinder.MarkupExtensions"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Tinder.Views.SwiperPage">
+    <AbsoluteLayout >
+     
+
+        <swipeCardView:SwipeCardView
+            AbsoluteLayout.LayoutBounds="1, 1, 1, 1"
+            AbsoluteLayout.LayoutFlags="All"
+            x:Name="SwipeCard"
+            ItemsSource="{Binding Users}"
+            VerticalOptions="FillAndExpand"
+            Dragging="SwipeCard_Dragging"
+            Swiped="SwipeCard_Swiped"
+            HorizontalOptions="FillAndExpand"
+            Padding="5"
+            SupportedSwipeDirections="Left,Right,Up" BackgroundColor="#DADADA" >
+            <swipeCardView:SwipeCardView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Frame CornerRadius="14" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <AbsoluteLayout>
+                                <Image Source="{Binding Avatar}" Aspect="AspectFit"
+                                                   AbsoluteLayout.LayoutBounds="0.5, 0.5, 1.9, 1.9"
+                                                   AbsoluteLayout.LayoutFlags="All"/>
+                                <Label Text="{Binding FullName}"
+                                       TextColor="White"
+                                       FontSize="30"
+                                       FontAttributes="Bold"
+                                       AbsoluteLayout.LayoutBounds="0, 0.93, 300, 50" 
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"/> 
+
+                                <Frame x:Name="LikeFrame" BorderColor="Green" BackgroundColor="Transparent" Padding="0" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.1,.1, 150, 50"
+                                         AbsoluteLayout.LayoutFlags="PositionProportional"  Rotation="-20" Opacity="0">
+                                    <Label x:Name="LikeText" Text="LIKE" FontAttributes="Bold" TextColor="Green" BackgroundColor="Transparent" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="32"/>
+                                </Frame>
+
+                                <Frame x:Name="NopeFrame" BorderColor="Red" BackgroundColor="Transparent" Padding="0" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.9,.1, 150, 50"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"  
+                                       Rotation="20" Opacity="0">
+                                    <Label Text="NOPE" TextColor="Red" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="32"/>
+                                </Frame>
+
+                                <Frame x:Name="SuperLikeFrame" BorderColor="DeepSkyBlue" BackgroundColor="Transparent" Padding="0" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5, 0.7, 150, 100"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"  Rotation="-20" Opacity="0">
+                                    <Label Text="SUPER LIKE" TextColor="DeepSkyBlue" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="32"></Label>
+                                </Frame>
+                            </AbsoluteLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </swipeCardView:SwipeCardView.ItemTemplate>
+        </swipeCardView:SwipeCardView>
+
+        <Label Text="Brak osób w zasięgu"
+               IsVisible="{Binding NoMoreUsers}"
+               FontSize="20"
+               AbsoluteLayout.LayoutBounds="0.5, 0.5, 200, 200"
+               AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        <StackLayout Orientation="Horizontal" Spacing="30"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.98, 210,50" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional">
+            <Button x:Name="NopeButton" Clicked="NopeButton_Clicked" Image="{local:EmbeddedImage Tinder.Images.ic_tinder_nope.png}" BackgroundColor="White" WidthRequest="50" HeightRequest="50" CornerRadius="25" />
+            <Button x:Name="SuperLikeButton" Clicked="SuperLikeButton_Clicked" Image="{local:EmbeddedImage Tinder.Images.ic_tinder_superlike.png}" BackgroundColor="White" WidthRequest="50" HeightRequest="50" CornerRadius="25" />
+            <Button x:Name="LikeButton" Clicked="LikeButton_Clicked" Image="{local:EmbeddedImage Tinder.Images.ic_tinder_like.png}" BackgroundColor="White" WidthRequest="50" HeightRequest="50" CornerRadius="25" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

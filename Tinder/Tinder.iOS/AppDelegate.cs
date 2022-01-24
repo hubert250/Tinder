@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using Tinder.iOS.Services;
+using Tinder.Services;
 using UIKit;
 
 
@@ -32,7 +34,7 @@ namespace Tinder.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register any platform specific implementations
+            containerRegistry.RegisterSingleton<ISQLiteDb, SQLiteDb>();
         }
     }
 }

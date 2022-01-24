@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Tinder.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class MainPageViewModel : ViewModelBase
     {
         public MainPageViewModel()
         {
