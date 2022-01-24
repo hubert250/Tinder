@@ -13,7 +13,7 @@ namespace Tinder.Services
 {
     public class UserManager : IUserManager
     {
-        private IContainerProvider Container => ((App)Xamarin.Forms.Application.Current).Container;
+        private IContainerProvider Container => ((App)Application.Current).Container;
         private SQLiteAsyncConnection _dbConnection;
         private IReadWritePermission _readWritePermission;
         private bool _isDbSetup = false;
@@ -37,11 +37,11 @@ namespace Tinder.Services
 
         public async Task<bool> SetupDb()
         {
-            if (await CheckPermissionStatus() == false)
+            if (await CheckPermissionStatus())
             {
                 await _readWritePermission.RequestAsync();
 
-                if (await CheckPermissionStatus() == true)
+                if (await CheckPermissionStatus())
                 {
                     await _dbConnection.CreateTableAsync<LocalUser>();
                     _isDbSetup = true;
